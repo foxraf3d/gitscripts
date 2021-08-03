@@ -27,7 +27,7 @@ def create_release_branch():
 def _switch_to_release_branch(branch_name):
     checkout_message = run(['git', 'checkout', '-b', branch_name], capture_output=True).stderr
     checkout_message = checkout_message.decode('utf-8').strip()
-    if 'already exists' in checkout_message:
+    if 'fatal:' in checkout_message:
         run(['git', 'checkout', branch_name])
 
 
